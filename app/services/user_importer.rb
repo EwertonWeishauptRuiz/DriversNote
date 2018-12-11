@@ -12,7 +12,7 @@ class UserImporter
     ActiveRecord::Base.transaction do
       csv_table.each do |row|
         user = User.new(id: row.fetch(:id))
-        user.full_name =  row.fetch(:full_name)
+        user.full_name = row.fetch(:full_name)
         user.sub_seats = row.fetch(:subscription_seats) || 0        
         @errors << user unless user.save
 
@@ -23,8 +23,6 @@ class UserImporter
         address.city = row.fetch(:city)
         address.country = row.fetch(:country)
         @errors << address unless address.save!
-        
-        
       end
       raise(ActiveRecord::Rollback) unless @errors.empty?
     end
