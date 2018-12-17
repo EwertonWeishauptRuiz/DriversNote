@@ -3,8 +3,6 @@
 This README contains the steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
 * Ruby version
   - Ruby 2.5.1p57
   - Rails 5.2.2
@@ -12,9 +10,10 @@ Things you may want to cover:
 # Configuration
 
 * Database initialization
-  - Add a valid username and password in the file database.yml inside the default method
+  - Add a valid username and password in the file *database.yml* inside the **default method**
   - Example:
-        ```default: &default
+        ```ruby
+        default: &default
             adapter: postgresql
             encoding: unicode
             # For details on connection pooling, see Rails configuration guide
@@ -25,9 +24,9 @@ Things you may want to cover:
             password: ewerton
         ```
 * Database creation
-  - After adding a valid username and password, initializate the database in the command line:
-      - rake db:create
-      - rake db:migrate
+  - **After** adding a valid username and password, initializate the database in the command line:
+      1. rake db:create
+      2. rake db:migrate
 
 * Add Users from csv file
   - In order to read the csv file and add the users to the database run in the command line:
