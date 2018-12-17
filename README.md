@@ -14,15 +14,16 @@ Things you may want to cover:
 * Database initialization
   - Add a valid username and password in the file database.yml inside the default method
   - Example:
-        `default: &default`
-          `adapter: postgresql`
-          `encoding: unicode`
-          `# For details on connection pooling, see Rails configuration guide`
-          `# http://guides.rubyonrails.org/configuring.html#database-pooling`
-          `pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>`
-          `host: localhost`
-          `username: ewerton`
-          `password: ewerton`
+        ```default: &default
+            adapter: postgresql
+            encoding: unicode
+            # For details on connection pooling, see Rails configuration guide
+            # http://guides.rubyonrails.org/configuring.html#database-pooling
+            pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+            host: localhost
+            username: ewerton
+            password: ewerton
+        ```
 * Database creation
   - After adding a valid username and password, initializate the database in the command line:
       - rake db:create
