@@ -1,9 +1,36 @@
-<%= form_for [@user, @address] do |f|%>
-  <%= f.text_field :full_name %>
-  <%= f.text_field :address1 %>
-  <%= f.text_field :address2 %>
-  <%= f.text_field :city %>
-  <%= f.text_field :postal_code %>
-  <%= f.text_field :country %>
-  <%= f.submit "confirm"%>
-<%end%>
+<div class="p10">
+  <h1>Create new address</h1>
+  <%= form_for [@user, @address] do |f|%>
+    <div class="p20">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="TextInput">Full Name</label>                  
+          <%= f.text_field :full_name, class:"form-control",id: "inputFullName", placeholder: "Full Name" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="TextInput">Address</label>                  
+        <%= f.text_field :address1, class:"form-control", placeholder: "Address" %>
+      </div>
+      <div class="form-group">
+        <label for="TextInput">Address 2</label>                  
+        <%= f.text_field :address2, class:"form-control", placeholder: "Address 2" %>
+      </div>      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <%= f.text_field :city, class: "form-control", id: "inputCity", placeholder: "City"%>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCountry">Country</label>
+          <%= f.text_field :country, class: "form-control", id: "inputCountry", placeholder: "Country"%>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputPostalCode">Postal Code</label>
+          <%= f.text_field :postal_code, class: "form-control", id: "inputPostalCode", placeholder: "Postal Code"%>
+        </div>
+      </div>
+      <%= link_to "Back", :back, class: "btn btn-danger"%>
+      <%= f.submit "Confirm", class: "btn btn-success"%>
+  <%end%>
+</div>

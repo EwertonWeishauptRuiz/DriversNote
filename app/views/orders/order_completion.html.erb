@@ -1,9 +1,16 @@
-<% if @order.errors.count > 0%>
-  <% @order.errors.each do |value, error| %>
-    Error
-    <%= value.to_s%>
-    <%= error %>
-  <%end%>
-<%else%>    
-  Order Saved
-<%end%>  
+<div class="p10">
+  <% if @order.errors.count > 0%>
+    <div class="alert alert-danger" role="alert">
+      Your Order could not be completed: 
+      <div class="p10">  
+        <% @order.errors.each do |value, error| %>
+          <p><%= value.to_s%>, <%= error %></p>      
+        <%end%>
+      </div>
+    </div>
+  <%else%>    
+    <div class="alert alert-success" role="alert">
+      Order Completed - Saved on the Database
+    </div>
+  <%end%>  
+</div>

@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController 
-  before_action :set_order, only:[:show, :update]
-    
-  def new
-    @user = User.find(params[:user_id])      
+  before_action :set_user, except: [:upgrade]
+
+  def new      
   end  
 
-  def create
-    @user = User.find(params[:user_id])      
+  def create    
     @order = @user.orders.build(status: "pending")      
     if @order.save
       redirect_to [@user, @order]
@@ -15,12 +13,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:user_id])      
+  def show    
+    @order = Order.find(params[:id])   
   end
 
-  def update    
-    @user = User.find(params[:user_id])      
+  def update        
+    @order = Order.find(params[:id])   
     if params[:commit] == "+"
       @order.add_beacon
     elsif params[:commit] == "-"
@@ -33,8 +31,7 @@ class OrdersController < ApplicationController
 
   def upgrade; end
 
-  def confirm_address
-    @user = User.find(params[:user_id])      
+  def confirm_address    
     @order = @user.orders.find(params[:order_id])
     if request.get? 
       @address = @order.address || @order.user.addresses.first      
@@ -46,18 +43,15 @@ class OrdersController < ApplicationController
   end
 
   def choose_address
-    @user = User.find(params[:user_id])      
     @order = @user.orders.find(params[:order_id])
     @address = @user.addresses
   end
 
   def confirm_order
-    @user = User.find(params[:user_id])      
     @order = @user.orders.find(params[:order_id])
   end
 
-  def order_completion
-    @user = User.find(params[:user_id])      
+  def order_completion    
     @order = @user.orders.find(params[:order_id])
     @order.complete_order    
   end
@@ -67,8 +61,8 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:beacons, :address_id)
   end
 
-  def set_order
-    @order = Order.find(params[:id])
-  end  
+  def set_user
+    @user = User.find(params[:user_id])      
+  end
 end
 

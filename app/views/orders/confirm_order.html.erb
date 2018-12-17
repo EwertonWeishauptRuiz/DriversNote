@@ -18,7 +18,9 @@
           <p>Country: <%=@order.address.country%></p>
         </li>
       </ul>
-    </div>
-    <%= link_to "Confirm", [@user, @order, :order_completion] %>
+    </div>    
+    <div style="padding-top: 10px;">
+      <%= link_to "Confirm", [@user, @order, :order_completion], class: "btn btn-success"%>
+    </div>    
   </div>
 </div>  
