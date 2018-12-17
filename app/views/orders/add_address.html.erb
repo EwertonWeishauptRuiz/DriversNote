@@ -1,0 +1,10 @@
+<%=form_for [@user, @order] do |f|%>  
+  <%= f.fields_for @order.build_address do |af|%>
+    <%= af.text_field :address1 %>
+    <%= af.text_field :address2 %>
+    <%= af.text_field :postal_code %>
+    <%= af.text_field :city %>
+    <%= af.text_field :country %>
+  <%end%>
+  <%= f.button :confirm %>
+<%end%>

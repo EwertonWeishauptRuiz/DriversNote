@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
 
   describe "associations" do
     it { should have_many(:addresses) }
+    it { should have_many(:orders) }
   end
 
   describe "validations" do

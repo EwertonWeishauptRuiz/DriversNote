@@ -1,0 +1,5 @@
+<div class="p20">
+  <%= form_for([@user, @user.orders.new]) do |f| %>  
+    <%=f.button "Place Order", class: "btn btn-primary" %>
+  <%end%>
+</div>

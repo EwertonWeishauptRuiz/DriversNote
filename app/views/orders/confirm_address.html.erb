@@ -1,0 +1,40 @@
+<div class="p10">
+  <h1 id = titulo>Confirm Shipping Address</h1>
+    <%= form_for [@user, @address], url: [@user, @order, :confirm_address], method: :post do |f| %>
+      <div style="padding:20px;">
+        <fieldset id= address_form disabled>                     
+            <div class="form-row">
+              <div class="form-group col-md-12">
+              <label for="disabledTextInput">Full Name</label>                  
+              <%= f.text_field :full_name, class: "form-control", id: "inputFullName", placeholder: "Full Name" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <%= f.text_field :address1, class:"form-control", id:"inputAddress", placeholder:"Address 1"%>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <%= f.text_field :address2, class:"form-control", id: "inputAddress2", placeholder: "Address 2"%>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <%= f.text_field :city, class: "form-control", id: "inputCity", placeholder: "City"%>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCountry">Country</label>
+                <%= f.text_field :country, class: "form-control", id: "inputCountry", placeholder: "Country"%>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputPostalCode">Postal Code</label>
+                <%= f.text_field :postal_code, class: "form-control", id: "inputPostalCode", placeholder: "Postal Code"%>
+              </div>
+            </div>        
+          </fieldset>
+        <%= hidden_field_tag "address_id", @address.id %>
+        <button type="submit" class="btn btn-primary">Confirm</button>        
+      </div>
+    <%end%>
+    <%= link_to "Change Address", new_user_address_path(@user) ,class:"btn btn-primary"%>
+</div>

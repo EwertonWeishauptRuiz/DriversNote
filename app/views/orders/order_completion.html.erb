@@ -1,0 +1,9 @@
+<% if @order.errors.count > 0%>
+  <% @order.errors.each do |value, error| %>
+    Error
+    <%= value.to_s%>
+    <%= error %>
+  <%end%>
+<%else%>    
+  Order Saved
+<%end%>  

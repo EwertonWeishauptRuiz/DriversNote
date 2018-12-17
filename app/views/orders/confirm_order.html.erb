@@ -1,0 +1,24 @@
+<div style="padding: 10px;"> 
+  <h1>Confirm Order</h1>
+  <div style="padding-left: 20px;">      
+    <div class="card">
+      <div class="card-header">
+        Order Information
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= @user.full_name%></li>
+        <li class="list-group-item">Number of Beacons: <%= @order.beacons %></li>
+        <li class="list-group-item">Total Price: $<%= @order.total_price %></li>
+        <li class="list-group-item">
+          <p>Name For Delivery: <%= @order.address.full_name %></p>
+          <p>Address 1: <%= @order.address.address1%></p>
+          <p>Address 2: <%=@order.address.address2%></p>
+          <p>Postal Code: <%=@order.address.postal_code%></p>
+          <p>City: <%=@order.address.city%></p>
+          <p>Country: <%=@order.address.country%></p>
+        </li>
+      </ul>
+    </div>
+    <%= link_to "Confirm", [@user, @order, :order_completion] %>
+  </div>
+</div>  

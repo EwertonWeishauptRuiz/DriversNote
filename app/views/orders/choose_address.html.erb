@@ -1,0 +1,17 @@
+<%= form_for [@user, @order] do |f|%>
+  <div class="card-body">
+    <% @address.each do |address|%>
+      <div>
+        <%= radio_button_tag "order[address_id]", address.id%>
+        <%= label_tag "order_address_#{address.id}", address.full_name%>
+        <%=address.address1%>
+        <%=address.address2%>
+        <%=address.postal_code%>
+        <%=address.city%>
+        <%=address.country%>
+      </div>
+    <%end%>
+  </div>
+  <%= link_to "New Address", new_user_address_path(@user), class: "btn btn-primary" %>  
+  <%= f.submit :confirm, class: "btn btn-primary" %> 
+<%end%>

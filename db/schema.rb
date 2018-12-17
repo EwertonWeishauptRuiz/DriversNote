@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_194358) do
+ActiveRecord::Schema.define(version: 2018_12_14_203654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 2018_12_11_194358) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "address_id"
+    t.integer "beacons", default: 0
+    t.decimal "total_price", default: "0.0"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer "sub_seats"
     t.string "full_name"
@@ -36,4 +48,6 @@ ActiveRecord::Schema.define(version: 2018_12_11_194358) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "users"
 end
